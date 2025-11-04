@@ -1,0 +1,36 @@
+<h1>Edit: {{book.title}}</h1>
+
+{{#if errors}}
+    <ul class="errors">
+        {{#each errors}}<li>{{this}}</li>{{/each}}
+    </ul>
+{{/if}}
+
+<form action="/books/{{book.id}}?_method=PUT" method="POST">
+    <p>
+        <label>Title<br>
+            <input name="title" value="{{book.title}}">
+        </label>
+    </p>
+    <p>
+        <label>Author<br>
+            <input name="author" value="{{book.author}}">
+        </label>
+    </p>
+    <p>
+        <label>ISBN (optional)<br>
+            <input name="isbn" value="{{book.isbn}}">
+        </label>
+    </p>
+    <p>
+        <button type="submit">Save</button>
+        <a href="/books/{{book.id}}">Cancel</a>
+    </p>
+</form>
+
+<form action="/books/{{book.id}}?_method=DELETE" method="POST" style="margin-top:1rem"
+                              onsubmit="return confirm('Delete this book?');">
+    <button type="submit">Delete</button>
+</form>
+
+<p><a href="/books">Back to list</a></p>

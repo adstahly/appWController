@@ -1,0 +1,12 @@
+{{!-- views/500.hbs --}}
+<h1>Server Error</h1>
+<p>Something went wrong.</p>
+
+{{#if stack}}
+    <details>
+        <summary>Stack trace</summary>
+        <pre>{{stack}}</pre>
+    </details>
+{{/if}}
+
+<p><a href="/books">Back to Books</a></p>

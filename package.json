@@ -1,0 +1,15 @@
+{
+  "name": "appwcontroller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "appWController.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "method-override": "^3.0.0"
+  }
+}

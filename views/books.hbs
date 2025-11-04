@@ -1,0 +1,35 @@
+<h1>Books</h1>
+
+<p><a href="/books/new">Add New Book</a></p>
+
+{{#if books.length}}
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each books}}
+            <tr>
+                <td><a href="/books/{{id}}">{{title}}</a></td>
+                <td>{{author}}</td>
+                <td>{{isbn}}</td>
+                <td>
+                    <a href="/books/{{id}}/edit">Edit</a>
+                    |
+                    <form action="/books/{{id}}?_method=DELETE" method="POST" style="display:inline"
+                                         onsubmit="return confirm('Delete this book?');">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>No books yet.</p>
+{{/if}}

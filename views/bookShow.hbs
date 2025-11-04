@@ -1,0 +1,14 @@
+<h1>{{book.title}}</h1>
+
+<p><strong>Author:</strong> {{book.author}}</p>
+{{#if book.isbn}}<p><strong>ISBN:</strong> {{book.isbn}}</p>{{/if}}
+
+<p>
+    <a href="/books/{{book.id}}/edit">Edit</a>
+    |
+<form action="/books/{{book.id}}?_method=DELETE" method="POST" style="display:inline" onsubmit="return confirm('Delete this book?');">
+    <button type="submit">Delete</button>
+</form>
+</p>
+
+<p><a href="/books">Back to list</a></p>
