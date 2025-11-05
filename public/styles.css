@@ -10,4 +10,5 @@ body { font-family: system-ui, Arial, sans-serif; margin: 0; }
 .form label { display: block; margin: 10px 0; }
 .form input { width: 320px; max-width: 100%; padding: 6px; }
 .actions { margin-top: 12px; }
+.errors { color: red; }
 header{ background-color: #dbc441}

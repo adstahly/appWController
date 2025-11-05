@@ -30,13 +30,13 @@ exports.newBookForm = (req, res) => {
 // POST /books - create a new book
 exports.createBook = (req, res) => {
     const { title, author, pages, isbn } = req.body;
-    const errors = [];
+    const errors = {};
 
-    if (!title || !title.trim()) errors.push({titleError: 'Title is required.'});
-    if (!author || !author.trim()) errors.push({authorError: 'Author is required.'});
-    if (!pages || pages <= 0) errors.push({pagesError: 'Pages must be greater than 0.'});
+    if (!title || !title.trim()) errors.titleError = 'Title is required.';
+    if (!author || !author.trim()) errors.authorError = 'Author is required.';
+    if (!pages || pages <= 0) errors.pagesError = 'Pages must be greater than 0.';
 
-    if (errors.length) {
+    if (Object.keys(errors).length > 0) {
         return res.status(400).render('newBook', {
             title: 'Add Book',
             errors,
@@ -82,15 +82,15 @@ exports.updateBook = (req, res) => {
     const { title, author, pages, isbn } = req.body;
     const errors = [];
 
-    if (!title || !title.trim()) errors.push({titleError: 'Title is required.'});
-    if (!author || !author.trim()) errors.push({authorError: 'Author is required.'});
-    if (!pages || pages <= 0) errors.push({pagesError: 'Pages must be greater than 0.'});
+    if (!title || !title.trim()) errors.titleError = 'Title is required.';
+    if (!author || !author.trim()) errors.authorError = 'Author is required.';
+    if (!pages || pages <= 0) errors.pagesError = 'Pages must be greater than 0.';
 
     const books = readBooks();
     const index = books.findIndex(b => b.id === req.params.id);
     if (index < 0) return res.status(404).render('404', { title: 'Book Not Found' });
 
-    if (errors.length) {
+    if (Object.keys(errors).length > 0) {
         return res.status(400).render('bookEdit', {
             title: 'Edit Book',
             errors,

@@ -3,7 +3,21 @@
     "id": "b_1761248561100",
     "title": "Lotr is OK CHANGED!!!",
     "author": "Tokien",
-    "pages": "500",
-    "isbn": "10212123"
+    "isbn": "10212123",
+    "pages": "500"
+  },
+  {
+    "id": "b_1762371866156",
+    "title": "No Game No Life",
+    "author": "Yuu Kamiya",
+    "pages": "182",
+    "isbn": ""
+  },
+  {
+    "id": "b_1762372137920",
+    "title": "Class of the Elite",
+    "author": "Syougo Kinugasa",
+    "pages": "198",
+    "isbn": "972654324"
   }
 ]

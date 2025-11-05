@@ -7,19 +7,19 @@
             <input name="title" value="{{#if values}}{{values.title}}{{/if}}">
         </label>
     </p>
-    {{#if errors.titleError}}<p>{{errors.titleError}}</p>{{/if}}
+    {{#if errors.titleError}}<p class="errors">{{errors.titleError}}</p>{{/if}}
     <p>
         <label>Author<br>
             <input name="author" value="{{#if values}}{{values.author}}{{/if}}">
         </label>
     </p>
-    {{#if errors.authorError}}<p>{{errors.authorError}}</p>{{/if}}
+    {{#if errors.authorError}}<p class="errors">{{errors.authorError}}</p>{{/if}}
     <p>
         <label>Pages<br>
             <input name="pages" type="number" value="{{#if values}}{{values.pages}}{{/if}}">
         </label>
     </p>
-    {{#if errors.pagesError}}<p>{{errors.pagesError}}</p>{{/if}}
+    {{#if errors.pagesError}}<p class="errors">{{errors.pagesError}}</p>{{/if}}
     <p>
         <label>ISBN (optional)<br>
             <input name="isbn" value="{{#if values}}{{values.isbn}}{{/if}}">
