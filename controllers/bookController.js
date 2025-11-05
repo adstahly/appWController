@@ -29,17 +29,18 @@ exports.newBookForm = (req, res) => {
 
 // POST /books - create a new book
 exports.createBook = (req, res) => {
-    const { title, author, isbn } = req.body;
+    const { title, author, pages, isbn } = req.body;
     const errors = [];
 
-    if (!title || !title.trim()) errors.push('Title is required.');
-    if (!author || !author.trim()) errors.push('Author is required.');
+    if (!title || !title.trim()) errors.push({titleError: 'Title is required.'});
+    if (!author || !author.trim()) errors.push({authorError: 'Author is required.'});
+    if (!pages || pages <= 0) errors.push({pagesError: 'Pages must be greater than 0.'});
 
     if (errors.length) {
         return res.status(400).render('newBook', {
             title: 'Add Book',
             errors,
-            values: { title, author, isbn }
+            values: { title, author, pages, isbn }
         });
     }
 
@@ -48,6 +49,7 @@ exports.createBook = (req, res) => {
         id: 'b_' + Date.now(),
         title: title.trim(),
         author: author.trim(),
+        pages,
         isbn: (isbn || '').trim()
     };
 
@@ -77,11 +79,12 @@ exports.editBookForm = (req, res) => {
 
 // PUT /books/:id - update book info
 exports.updateBook = (req, res) => {
-    const { title, author, isbn } = req.body;
+    const { title, author, pages, isbn } = req.body;
     const errors = [];
 
-    if (!title || !title.trim()) errors.push('Title is required.');
-    if (!author || !author.trim()) errors.push('Author is required.');
+    if (!title || !title.trim()) errors.push({titleError: 'Title is required.'});
+    if (!author || !author.trim()) errors.push({authorError: 'Author is required.'});
+    if (!pages || pages <= 0) errors.push({pagesError: 'Pages must be greater than 0.'});
 
     const books = readBooks();
     const index = books.findIndex(b => b.id === req.params.id);
@@ -91,7 +94,7 @@ exports.updateBook = (req, res) => {
         return res.status(400).render('bookEdit', {
             title: 'Edit Book',
             errors,
-            book: { ...books[index], title, author, isbn }
+            book: { ...books[index], title, author, pages, isbn }
         });
     }
 
@@ -99,6 +102,7 @@ exports.updateBook = (req, res) => {
         ...books[index],
         title: title.trim(),
         author: author.trim(),
+        pages,
         isbn: (isbn || '').trim()
     };
 

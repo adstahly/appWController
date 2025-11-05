@@ -1,10 +1,5 @@
 <h1>Edit: {{book.title}}</h1>
 
-{{#if errors}}
-    <ul class="errors">
-        {{#each errors}}<li>{{this}}</li>{{/each}}
-    </ul>
-{{/if}}
 
 <form action="/books/{{book.id}}?_method=PUT" method="POST">
     <p>
@@ -12,11 +7,19 @@
             <input name="title" value="{{book.title}}">
         </label>
     </p>
+    {{#if errors.titleError}}<p>{{errors.titleError}}</p>{{/if}}
     <p>
         <label>Author<br>
             <input name="author" value="{{book.author}}">
         </label>
     </p>
+    {{#if errors.authorError}}<p>{{errors.authorError}}</p>{{/if}}
+    <p>
+    <label>Pages<br>
+        <input name="pages" type="number" value="{{book.pages}}">
+    </label>
+    </p>
+    {{#if errors.pagesError}}<p>{{errors.pagesError}}</p>{{/if}}
     <p>
         <label>ISBN (optional)<br>
             <input name="isbn" value="{{book.isbn}}">
