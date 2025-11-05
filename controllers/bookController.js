@@ -21,7 +21,7 @@ exports.listBooks = (req, res) => {
     const { sort } = req.query;
     let books = readBooks();
     if (sort === 'pages') {
-        books.sort((a, b) => a.pages - b.pages);
+        books.sort((a, b) => parseInt(a.pages, 10) - parseInt(b.pages, 10));
     }
     res.render('books', { title: 'Books', books });
 };
@@ -53,7 +53,7 @@ exports.createBook = (req, res) => {
         id: 'b_' + Date.now(),
         title: title.trim(),
         author: author.trim(),
-        pages,
+        pages: parseInt(pages, 10),
         isbn: (isbn || '').trim()
     };
 
@@ -84,7 +84,7 @@ exports.editBookForm = (req, res) => {
 // PUT /books/:id - update book info
 exports.updateBook = (req, res) => {
     const { title, author, pages, isbn } = req.body;
-    const errors = [];
+    const errors = {};
 
     if (!title || !title.trim()) errors.titleError = 'Title is required.';
     if (!author || !author.trim()) errors.authorError = 'Author is required.';
@@ -106,7 +106,7 @@ exports.updateBook = (req, res) => {
         ...books[index],
         title: title.trim(),
         author: author.trim(),
-        pages,
+        pages: parseInt(pages, 10),
         isbn: (isbn || '').trim()
     };
 
