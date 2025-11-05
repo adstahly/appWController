@@ -31,7 +31,7 @@ app.use('/', bookRoutes);
 
 // 404 + 500 handlers
 app.use((req, res) => res.status(404).render('404', { title: 'Not Found' }));
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err);
     res.status(500).render('500', { title: 'Server Error' });
 });
