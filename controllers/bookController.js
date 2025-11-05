@@ -18,7 +18,11 @@ function writeBooks(list) {
 
 // GET /books - list all books
 exports.listBooks = (req, res) => {
-    const books = readBooks();
+    const { sort } = req.query;
+    let books = readBooks();
+    if (sort === 'pages') {
+        books.sort((a, b) => a.pages - b.pages);
+    }
     res.render('books', { title: 'Books', books });
 };
 
