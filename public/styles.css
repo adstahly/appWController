@@ -1,8 +1,11 @@
 body { font-family: system-ui, Arial, sans-serif; margin: 0; }
 .site-header nav a { margin-right: 12px; }
+header h1 a { margin-left: 15px; }
 .container { padding: 20px; }
-.btn { display: inline-block; padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; text-decoration: none; }
+.btn { display: inline-block; padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; text-decoration: none; cursor: pointer; }
 .btn.primary { background: #fafafa; }
+.btn:hover {background: #eaeaea; }
+.btn:active {background: #dcdcdc; transform: scale(0.98);}
 .alert { background: #ffe9e9; border-left: 4px solid #e33; padding: 8px 12px; margin: 10px 0; }
 .list { list-style: none; padding: 0; }
 .card { background: #fff; padding: 10px; margin: 8px 0; border-radius: 8px; border: 1px solid #eee; }

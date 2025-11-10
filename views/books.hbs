@@ -1,7 +1,11 @@
 <h1>Books</h1>
 
-<p><a href="/books/new">Add New Book</a> | <a href="/books/?sort=pages">Sort by Pages (Ascending)</a>
-</p>
+<p><a href="/books/new">Add New Book</a></p>
+<form action="/books" method="GET">
+    <input type="hidden" name="sort" value="pages">
+    <button type="submit" class="btn primary">Sort by Pages (Ascending)</button>
+</form>
+
 
 {{#if books.length}}
     <table>
@@ -26,7 +30,7 @@
                     |
                     <form action="/books/{{id}}?_method=DELETE" method="POST" style="display:inline"
                                          onsubmit="return confirm('Delete this book?');">
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="btn">Delete</button>
                     </form>
                 </td>
             </tr>
